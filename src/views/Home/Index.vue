@@ -1,7 +1,11 @@
 <template>
   <main>
     <custom-cursor />
-    <div id="scroll-container" style="width: 10000vw"></div>
+    <div id="scroll-container" style="width: 10000vw">
+      <div class="vh-100 vw-100" style="background: rgb(255, 0, 0)"></div>
+      <div class="vh-100 vw-100" style="background: rgb(0, 255, 0)"></div>
+      <div class="vh-100 vw-100" style="background: rgb(0, 0, 255)"></div>
+    </div>
   </main>
 </template>
 
@@ -27,7 +31,7 @@ export default {
         getSpeed: true,
         getDirection: true,
         multiplier: 1,
-        lerp: 0.08,
+        lerp: 0.07,
         direction: "horizontal",
         smooth: true,
       });

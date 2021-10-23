@@ -1,48 +1,55 @@
 *:not(input, textarea) {
-    /* user-select: none; */
-    overscroll-behavior: none;
+  /* user-select: none; */
+  overscroll-behavior: none;
 }
-
 
 /* * {
     border: 2px solid red !important;
 } */
 
 :root {
-    --bg: #EAEDDD;
-    --text-light: #e3e3e3;
-    --bg-dark: #31332F;
+  --bg: #eaeddd;
+  --text-light: #e3e3e3;
+  --bg-dark: #31332f;
 }
 
 html {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    background: var(--bg);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--bg);
 }
 
-@media(min-width: 1280px) {
-    * {
-        cursor: none !important;
-    }
+@media (min-width: 1280px) {
+  * {
+    cursor: none !important;
+  }
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+.vw-100 {
+  width: 100vw;
 }
 
 ::selection {
-    background: rgba(49, 51, 47, 0.16);
+  background: rgba(49, 51, 47, 0.16);
 }
 
- ::-webkit-scrollbar {
-    width: 0px;
+::-webkit-scrollbar {
+  width: 0px;
 }
 
 .pointer-events-none {
-    pointer-events: none !important;
+  pointer-events: none !important;
 }
