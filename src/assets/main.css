@@ -1,0 +1,48 @@
+*:not(input, textarea) {
+    /* user-select: none; */
+    overscroll-behavior: none;
+}
+
+
+/* * {
+    border: 2px solid red !important;
+} */
+
+:root {
+    --bg: #EAEDDD;
+    --text-light: #e3e3e3;
+    --bg-dark: #31332F;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: var(--bg);
+}
+
+@media(min-width: 1280px) {
+    * {
+        cursor: none !important;
+    }
+}
+
+ul {
+    list-style-type: none;
+}
+
+::selection {
+    background: rgba(49, 51, 47, 0.16);
+}
+
+ ::-webkit-scrollbar {
+    width: 0px;
+}
+
+.pointer-events-none {
+    pointer-events: none !important;
+}

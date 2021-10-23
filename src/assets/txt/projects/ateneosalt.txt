@@ -1,0 +1,5 @@
+This is a redesign of Ateneo SALT's existing website.
+
+The goal was to redesign Ateneo SALT's existing website as part of an information architecture course.
+
+We first identified the UI and UX elements to improve on the site and made a 

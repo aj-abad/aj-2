@@ -1,0 +1,5 @@
+Fight the Power is an exhibit website featuring a mixtape of songs protesting police brutality.
+
+I collaborated with graphic designer <a href="https://instagram.com/ish.core" target="_blank" rel="noopener">Ish</a> for this project. Our goal was to create an interactive experience to showcase the following: a mixtape of twelve songs protesting police brutality, a compilation video showcasing relevant footage, and a poster for each song in said mixtape.
+
+We decided to create Fight the Power, a cool website and shit.

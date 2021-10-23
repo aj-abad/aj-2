@@ -1,0 +1,5 @@
+Cura is a progressive web app that allows customers to book personal care services at home.
+
+For my capstone project, my team had to deliver a product that will help barber shops partially regain their lost income due to the COVID-19 pandemic. We had to develop a minumum viable product and defend it within three months.
+
+My team came up with Cura, a Vue- and .NET-powered PWA that helps personal care shops do home service. Shop owners can use Cura to manage their services, while customers can browse available shops and book their services.

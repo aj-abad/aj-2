@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "roc grotesk";
+  src: url("roc_grotesk_regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/*  
+ @font-face {
+     font-family: 'roc grotesk';
+     src: url('roc_grotesk_bold.woff') format('woff');
+     font-weight: bold;
+     font-style: normal;
+ } */
+
+@font-face {
+  font-family: "roc grotesk wide";
+  src: url("roc_grotesk_wide_bold.woff") format("woff");
+}
+
+.display {
+  font-family: "ivy mode";
+  font-weight: lighter;
+  line-height: 1.25em;
+  white-space: nowrap;
+}
+
+@media (max-width: 1365px) {
+  html {
+    font-size: 12px !important;
+  }
+}
+
+@media (min-width: 3840px) {
+  html {
+    font-size: 32px !important;
+  }
+}
