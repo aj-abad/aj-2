@@ -7,7 +7,7 @@
     border: 2px solid red !important;
 } */
 
-section {
+section.main-section {
   flex-shrink: 0;
   height: 100%;
 }
