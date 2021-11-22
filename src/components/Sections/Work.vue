@@ -23,7 +23,6 @@ export default {
 <style lang="stylus" scoped>
 #work {
   padding-left: 72px;
-  background: red;
   overflow: hidden;
   z-index: 2;
 }

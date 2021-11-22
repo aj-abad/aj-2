@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      isAnimating: false,
+      scroll: null,
     };
   },
   watch: {
@@ -69,8 +69,7 @@ export default {
 
 <style lang="stylus" scoped>
 #about {
-  padding-left: 216px;
-  background: blue;
+  padding-left: 144px;
   overflow: hidden;
   z-index: 4;
 }

@@ -12,6 +12,7 @@ section.main-section {
   height: 100%;
   display: flex;
   position: absolute;
+  background: var(--bg);
 }
 
 .animating {
