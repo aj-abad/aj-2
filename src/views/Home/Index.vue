@@ -3,10 +3,10 @@
     <custom-cursor />
     <main id="scroll-container" class="flex-grow-1" style="width: 10000vw">
       <div class="d-flex h-100" id="main-view">
-        <navigation-buttons />
-        <work />
-        <about />
-        <contact />
+        <navigation-buttons @update="setActiveLink" />
+        <work :isActive="activeLink === 0" />
+        <about :isActive="activeLink === 1" />
+        <contact :isActive="activeLink === 2" />
       </div>
     </main>
     <Footer />
@@ -34,6 +34,7 @@ export default {
   data() {
     return {
       scroll: null,
+      activeLink: 0,
     };
   },
   mounted() {
@@ -53,6 +54,9 @@ export default {
   methods: {
     scrollHandler(e) {
       this.scrollSpeed = e.speed;
+    },
+    setActiveLink(e) {
+      this.activeLink = e;
     },
   },
   beforeDestroy() {

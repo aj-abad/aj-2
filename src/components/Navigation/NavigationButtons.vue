@@ -11,7 +11,7 @@
       :key="i"
       @click="setActiveLink(i)"
       :id="`nav-${i}`"
-      :style="`left: ${i * 72}px`"
+      :style="`left: ${i * 72 - i * 2}px`"
     >
       <span> {{ link }} </span>
       <div class="expand" aria-hidden="true">+</div>
@@ -31,6 +31,7 @@ export default {
   methods: {
     setActiveLink(i) {
       this.activeLink = i;
+      this.$emit("update", i);
     },
   },
 };
@@ -38,6 +39,8 @@ export default {
 
 <style lang="stylus" scoped>
 .btn-section {
+  transition: margin-left 0.6s;
+  transition-timing-function: ease-in-out;
   height: 100%;
   display: flex;
   align-items: flex-end;
@@ -47,10 +50,9 @@ export default {
   position: absolute;
   top: 0;
   border-right: 2px solid var(--bg-dark);
+  border-left: @border-right;
   outline: none !important;
   background: var(--bg);
-  transition: left 0.3s;
-  border-left: 2px solid transparent;
 
   &:first-of-type {
     border-left: 2px solid var(--bg);
@@ -83,14 +85,14 @@ export default {
 }
 
 #nav-0.active ~ #nav-1 {
-  margin-left: calc(100vw - (72px * 3));
+  margin-left: calc(100vw - (72px * 3) + 6px);
 }
 
 #nav-0.active ~ #nav-2 {
-  margin-left: calc(100vw - (72px * 3));
+  margin-left: calc(100vw - (72px * 3) + 6px);
 }
 
 #nav-1.active ~ #nav-2 {
-  margin-left: calc(100vw - (72px * 3));
+  margin-left: calc(100vw - (72px * 3) + 6px);
 }
 </style>

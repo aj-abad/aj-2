@@ -1,7 +1,12 @@
 <template>
-  <section class="main-section" id="work">
-    <div class="vw-100 h-100 red">
-      <h1>Work</h1>
+  <section class="main-section" id="work" :class="{ active: isActive }">
+    <div class="vw-100 h-100">
+      <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
+        <h1 class="wide" style="font-size: 200px; line-height: 175px">
+          MY <br />
+          WORK
+        </h1>
+      </div>
     </div>
   </section>
 </template>
@@ -9,13 +14,16 @@
 <script>
 export default {
   name: "Work",
+  props: {
+    isActive: Boolean,
+  },
 };
 </script>
 
 <style lang="stylus" scoped>
 #work {
   padding-left: 72px;
-  max-width: 50vw;
+  background: red;
   overflow: hidden;
 }
 </style>
