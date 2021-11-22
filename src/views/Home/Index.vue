@@ -1,21 +1,27 @@
 <template>
-  <main>
+  <main class="d-flex flex-column" style="height: 100vh">
     <custom-cursor />
-    <div id="scroll-container" style="width: 10000vw">
-      <div class="vh-100 vw-100" style="background: rgb(255, 0, 0)"></div>
-      <div class="vh-100 vw-100" style="background: rgb(0, 255, 0)"></div>
-      <div class="vh-100 vw-100" style="background: rgb(0, 0, 255)"></div>
+    <Header />
+    <div id="scroll-container" class="flex-grow-1" style="width: 10000vw">
+      <div class="h-100 vw-100" style="background: rgb(255, 0, 0)"></div>
+      <div class="h-100 vw-100" style="background: rgb(0, 255, 0)"></div>
+      <div class="h-100 vw-100" style="background: rgb(0, 0, 255)"></div>
     </div>
+    <Footer />
   </main>
 </template>
 
 <script>
+import Header from "@/components/Navigation/Header";
+import Footer from "@/components/Navigation/Footer";
 import LocomotiveScroll from "locomotive-scroll";
 import CustomCursor from "@/components/CustomCursor";
 export default {
   name: "Home",
   components: {
     CustomCursor,
+    Footer,
+    Header,
   },
   data() {
     return {
