@@ -20,14 +20,21 @@
         d="M279.3,82h34.35C345.34,82,356,96.66,356,115.74c0,21.63-10.87,33.73-39.37,33.73H279.3ZM316,134.91c14.56,0,20.3-6.77,20.3-19.17,0-10.67-5.74-19.18-21.63-19.18H299v38.35Z"
       />
     </svg>
-    <div class="ml-auto">
-      <div
-        class="text-right text-uppercase"
-        style="font-size: 24px; line-height: 24px"
-      >
-        Manila-based <br />
-        creative web developer
-      </div>
+    <div class="h-100 ml-auto">
+      <svg class="h-100" viewBox="0 0 154.09 33.68" style="overflow: visible">
+        <text class="footer-text" transform="translate(67.08 8.34)" style="">
+          MANILA-BASED
+        </text>
+        <text transform="translate(0 20.25)" class="footer-text">
+          CREATIVE WEB DEVELOPER
+        </text>
+        <text transform="translate(113.36 32.17)" class="footer-text">
+          <tspan style="transform: scaleY(0.5)">&copy;</tspan>
+          <tspan>
+            {{ year }}
+          </tspan>
+        </text>
+      </svg>
     </div>
   </footer>
 </template>
@@ -35,6 +42,11 @@
 <script>
 export default {
   name: "Footer",
+  data() {
+    return {
+      year: new Date().getFullYear(),
+    };
+  },
 };
 </script>
 
@@ -45,5 +57,10 @@ footer {
 
 path {
   fill: var(--bg-dark);
+}
+
+.footer-text {
+  font-size: 12px;
+  font-family: 'roc grotesk';
 }
 </style>

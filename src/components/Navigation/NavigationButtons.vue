@@ -1,5 +1,6 @@
 <template>
   <nav class="d-flex">
+<<<<<<< HEAD
     <div class="d-flex" v-for="(link, i) in links" :key="i">
       <button
         data-scroll
@@ -14,6 +15,24 @@
         <div class="expand" aria-hidden="true">+</div>
       </button>
     </div>
+=======
+    <button
+      data-scroll
+      data-scroll-sticky
+      data-scroll-target="#main-view"
+      type="button"
+      class="btn-section"
+      :class="{ active: activeLink === i }"
+      v-for="(link, i) in links"
+      :key="i"
+      @click="setActiveLink(i)"
+      :id="`nav-${i}`"
+      :style="`left: ${i * 72 - i * 2}px`"
+    >
+      <span> {{ link }} </span>
+      <div class="expand" aria-hidden="true">+</div>
+    </button>
+>>>>>>> e3146f2ac64183b874aa3fef118bcd57e6d7b16b
   </nav>
 </template>
 
@@ -44,6 +63,7 @@ export default {
   },
   methods: {
     setActiveLink(i) {
+<<<<<<< HEAD
       if (this.activeLink === 1 || this.isLocked) return null;
       this.isLocked = true;
       console.log(toLeft[i]);
@@ -60,6 +80,10 @@ export default {
         left: window.innerWidth - 72 - 72 - 72 + 8,
         easing: "easeInOutQuad",
       });
+=======
+      this.activeLink = i;
+      this.$emit("update", i);
+>>>>>>> e3146f2ac64183b874aa3fef118bcd57e6d7b16b
     },
   },
 };
@@ -67,6 +91,8 @@ export default {
 
 <style lang="stylus" scoped>
 .btn-section {
+  transition: margin-left 0.6s;
+  transition-timing-function: ease-in-out;
   height: 100%;
   display: flex;
   align-items: flex-end;
@@ -78,8 +104,25 @@ export default {
   border-left: @border-right;
   outline: none !important;
   background: var(--bg);
+<<<<<<< HEAD
   margin-left: -2px;
   z-index: 4;
+=======
+
+  &:first-of-type {
+    border-left: 2px solid var(--bg);
+  }
+
+  &.active + button {
+    border-left: 2px solid var(--bg-dark);
+  }
+
+  &:hover {
+    span {
+      transform: rotate(-90deg) translateX(calc(50% + 32px));
+    }
+  }
+>>>>>>> e3146f2ac64183b874aa3fef118bcd57e6d7b16b
 
   span {
     transition: 0.3s;
@@ -96,4 +139,19 @@ export default {
     left: 0;
   }
 }
+<<<<<<< HEAD
+=======
+
+#nav-0.active ~ #nav-1 {
+  margin-left: calc(100vw - (72px * 3) + 6px);
+}
+
+#nav-0.active ~ #nav-2 {
+  margin-left: calc(100vw - (72px * 3) + 6px);
+}
+
+#nav-1.active ~ #nav-2 {
+  margin-left: calc(100vw - (72px * 3) + 6px);
+}
+>>>>>>> e3146f2ac64183b874aa3fef118bcd57e6d7b16b
 </style>
