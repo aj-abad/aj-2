@@ -18,7 +18,6 @@ export default {
   name: "Contact",
   props: {
     isActive: Boolean,
-    progress: Number,
   },
   data() {
     return {
@@ -27,13 +26,14 @@ export default {
   },
   watch: {
     isActive() {
+      const el = document.querySelector("#contact");
       if (this.isActive) {
-        const el = document.querySelector("#contact");
         anime({
           targets: this,
-          duration: 4000,
+          duration: 400,
           begin: () => {
             el.classList.remove("d-none");
+            el.classList.add("animating");
           },
           update: () => {
             const offset = document
@@ -42,6 +42,26 @@ export default {
             el.style.clipPath = `inset(0 0 0 ${offset}px)`;
           },
           complete: () => {
+            el.classList.remove("animating");
+            el.style.clipPath = null;
+          },
+        });
+      } else {
+        anime({
+          targets: this,
+          duration: 400,
+          begin: () => {
+            el.classList.add("animating");
+          },
+          update: () => {
+            const offset = document
+              .querySelector("#nav-2")
+              .getBoundingClientRect().x;
+            el.style.clipPath = `inset(0 0 0 ${offset}px)`;
+          },
+          complete: () => {
+            el.classList.remove("animating");
+            el.classList.add("d-none");
             el.style.clipPath = null;
           },
         });

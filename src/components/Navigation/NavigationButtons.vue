@@ -44,15 +44,14 @@ export default {
       this.isLocked = true;
       anime({
         targets: toLeft[i],
-        duration: 4000,
+        duration: 400,
         left: 0,
         easing: "easeInOutQuad",
-        update: (e) => this.$emit("progress", e.progress),
         complete: () => (this.isLocked = false),
       });
       anime({
         targets: toRight[i],
-        duration: 4000,
+        duration: 400,
         left: window.innerWidth - 72 - 72 - 72 + 8,
         easing: "easeInOutQuad",
       });
