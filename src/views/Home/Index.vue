@@ -4,9 +4,9 @@
     <main id="scroll-container" class="flex-grow-1 position-relative">
       <div class="d-flex h-100" id="main-view">
         <navigation-buttons @update="setActiveLink" />
-        <work :progress="progress" :isActive="activeLink === 0" />
-        <about :progress="progress" :isActive="activeLink === 1" />
-        <contact :progress="progress" :isActive="activeLink === 2" />
+        <work :isActive="activeLink === 0" />
+        <about :isActive="activeLink === 1" />
+        <contact :isActive="activeLink === 2" />
       </div>
     </main>
     <Footer />

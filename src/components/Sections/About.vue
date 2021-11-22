@@ -1,14 +1,46 @@
 <template>
   <section class="main-section d-none" id="about">
-    <div class="vw-100 h-100">
-      <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-        <h1 class="wide" style="font-size: 200px; line-height: 175px">ABOUT</h1>
+    <div id="about-scroll" class="d-flex">
+      <div class="vw-100 h-100">
+        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
+          <h1 class="wide" style="font-size: 200px; line-height: 175px">
+            ABOUT
+          </h1>
+        </div>
+      </div>
+      <div class="vw-100 h-100">
+        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
+          <h1 class="wide" style="font-size: 200px; line-height: 175px">
+            CON-
+            <br />
+            TACT
+          </h1>
+        </div>
+      </div>
+      <div class="vw-100 h-100">
+        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
+          <h1 class="wide" style="font-size: 200px; line-height: 175px">
+            CON-
+            <br />
+            TACT
+          </h1>
+        </div>
+      </div>
+      <div class="vw-100 h-100">
+        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
+          <h1 class="wide" style="font-size: 200px; line-height: 175px">
+            CON-
+            <br />
+            TACT
+          </h1>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import LocomotiveScroll from "locomotive-scroll";
 import anime from "animejs/lib/anime.es";
 export default {
   name: "about",
@@ -20,10 +52,28 @@ export default {
       scroll: null,
     };
   },
+  methods: {
+    initScroll() {
+      this.scroll = new LocomotiveScroll({
+        el: document.querySelector("#about-scroll"),
+        getSpeed: true,
+        getDirection: true,
+        multiplier: 1,
+        lerp: 0.08,
+        direction: "horizontal",
+        smooth: true,
+      });
+    },
+    destroyScroll() {
+      this.scroll.destroy();
+      this.scroll = null;
+    },
+  },
   watch: {
     isActive() {
       const el = document.querySelector("#about");
       if (this.isActive) {
+        document.querySelector("#about-scroll").style.transform = null;
         anime({
           targets: this,
           duration: 400,
@@ -40,9 +90,11 @@ export default {
           complete: () => {
             el.classList.remove("animating");
             el.style.clipPath = null;
+            this.initScroll();
           },
         });
       } else {
+        this.destroyScroll();
         anime({
           targets: this,
           duration: 400,
