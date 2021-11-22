@@ -35,7 +35,7 @@ export default {
 .year {
   width: calc((100vw / 25));
   min-width: 32px;
-  background: rgba(0, 0, 0, 0.87);
+  background: var(--bg-dark);
   color: var(--bg);
   font-size: 32px;
   display: flex;
@@ -54,6 +54,6 @@ export default {
   flex-shrink: 0;
   height: 100%;
   width: calc((100vw / 2));
-  border-right: 2px solid rgba(0, 0, 0, 0.87);
+  border-right: 2px solid var(--bg-dark);
 }
 </style>

@@ -1,10 +1,6 @@
 <template>
   <footer class="flex-shrink-0 pa-4 d-flex align-center" style="height: 96px">
-    <svg
-      viewBox="0 0 356 149.47"
-      style="height: 100%; opacity: 0.87"
-      aria-label="AJ Abad"
-    >
+    <svg viewBox="0 0 356 149.47" style="height: 100%" aria-label="AJ Abad">
       <path
         d="M67,53.73H27.35l-7,13.74H.08L36.79,0H60.17L96.88,67.47H74ZM61.19,42.25l-14-27.48H47L33.1,42.25Z"
       />
@@ -25,7 +21,10 @@
       />
     </svg>
     <div class="ml-auto">
-      <div class="text-right" style="font-size: 24px; line-height: 24px">
+      <div
+        class="text-right text-uppercase"
+        style="font-size: 24px; line-height: 24px"
+      >
         Manila-based <br />
         creative web developer
       </div>
@@ -41,6 +40,10 @@ export default {
 
 <style lang="stylus" scoped>
 footer {
-  border-top: 2px solid rgba(0, 0, 0, 0.87);
+  border-top: 2px solid var(--bg-dark);
+}
+
+path {
+  fill: var(--bg-dark);
 }
 </style>

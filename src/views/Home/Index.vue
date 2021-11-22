@@ -1,35 +1,41 @@
 <template>
   <main class="d-flex flex-column" style="height: 100vh">
     <custom-cursor />
-    <Header />
-    <div id="scroll-container" class="flex-grow-1" style="width: 10000vw">
-      <project-scroller />
-    </div>
+    <main id="scroll-container" class="flex-grow-1" style="width: 10000vw">
+      <div class="d-flex h-100" id="main-view">
+        <navigation-buttons />
+        <work />
+        <about />
+        <contact />
+      </div>
+    </main>
     <Footer />
   </main>
 </template>
 
 <script>
-import Header from "@/components/Navigation/Header";
 import Footer from "@/components/Navigation/Footer";
 import LocomotiveScroll from "locomotive-scroll";
 import CustomCursor from "@/components/CustomCursor";
-import ProjectScroller from "@/components/ProjectScroller";
+import NavigationButtons from "@/components/Navigation/NavigationButtons";
+import Work from "@/components/Sections/Work";
+import About from "@/components/Sections/About";
+import Contact from "@/components/Sections/Contact";
 export default {
   name: "Home",
   components: {
     CustomCursor,
+    NavigationButtons,
     Footer,
-    Header,
-    ProjectScroller,
+    Work,
+    About,
+    Contact,
   },
   data() {
     return {
       scroll: null,
-      introAnimationDone: false,
     };
   },
-
   mounted() {
     setTimeout(() => {
       this.scroll = new LocomotiveScroll({
