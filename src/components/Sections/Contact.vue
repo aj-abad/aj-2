@@ -1,5 +1,5 @@
 <template>
-  <section class="main-section" id="contact">
+  <section class="main-section d-none" id="contact">
     <div class="vw-100 h-100">
       <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
         <h1 class="wide" style="font-size: 200px; line-height: 175px">
@@ -21,7 +21,8 @@ export default {
 <style lang="stylus" scoped>
 #contact {
   padding-left: 216px;
-  background: red;
+  background: blue;
   overflow: hidden;
+  z-index: 4;
 }
 </style>

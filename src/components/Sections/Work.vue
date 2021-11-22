@@ -25,5 +25,6 @@ export default {
   padding-left: 72px;
   background: red;
   overflow: hidden;
+  z-index: 2;
 }
 </style>

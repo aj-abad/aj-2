@@ -11,8 +11,7 @@ section.main-section {
   flex-shrink: 0;
   height: 100%;
   display: flex;
-  transition: max-width 3s;
-  transition-timing-function: ease-in-out;
+  position: absolute;
 }
 
 :root {

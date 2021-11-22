@@ -79,7 +79,7 @@ export default {
   outline: none !important;
   background: var(--bg);
   margin-left: -2px;
-  z-index: 4;
+  z-index: 100;
 
   span {
     transition: 0.3s;
