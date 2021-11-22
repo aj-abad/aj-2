@@ -2,9 +2,6 @@
   <nav class="d-flex">
     <div class="d-flex" v-for="(link, i) in links" :key="i">
       <button
-        data-scroll
-        data-scroll-sticky
-        data-scroll-target="#main-view"
         type="button"
         class="btn-section"
         @click="setActiveLink(i)"
@@ -26,7 +23,6 @@ const toLeft = [
 ];
 const toRight = [["#nav-1", "#nav-2"], ["#nav-2"], []];
 export default {
-  // components: { Work },
   name: "Header",
   data() {
     return {
@@ -44,9 +40,8 @@ export default {
   },
   methods: {
     setActiveLink(i) {
-      if (this.activeLink === 1 || this.isLocked) return null;
+      if (this.activeLink === i || this.isLocked) return null;
       this.isLocked = true;
-      console.log(toLeft[i]);
       anime({
         targets: toLeft[i],
         duration: 400,
@@ -86,20 +81,6 @@ export default {
   margin-left: -2px;
   z-index: 4;
 
-  &:first-of-type {
-    border-left: 2px solid var(--bg);
-  }
-
-  &.active + button {
-    border-left: 2px solid var(--bg-dark);
-  }
-
-  &:hover {
-    span {
-      transform: rotate(-90deg) translateX(calc(50% + 32px));
-    }
-  }
-
   span {
     transition: 0.3s;
     display: block;
@@ -114,17 +95,5 @@ export default {
     top: 0;
     left: 0;
   }
-}
-
-#nav-0.active ~ #nav-1 {
-  margin-left: calc(100vw - (72px * 3) + 6px);
-}
-
-#nav-0.active ~ #nav-2 {
-  margin-left: calc(100vw - (72px * 3) + 6px);
-}
-
-#nav-1.active ~ #nav-2 {
-  margin-left: calc(100vw - (72px * 3) + 6px);
 }
 </style>
