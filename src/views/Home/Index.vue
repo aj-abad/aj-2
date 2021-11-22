@@ -3,9 +3,7 @@
     <custom-cursor />
     <Header />
     <div id="scroll-container" class="flex-grow-1" style="width: 10000vw">
-      <div class="h-100 vw-100" style="background: rgb(255, 0, 0)"></div>
-      <div class="h-100 vw-100" style="background: rgb(0, 255, 0)"></div>
-      <div class="h-100 vw-100" style="background: rgb(0, 0, 255)"></div>
+      <project-scroller />
     </div>
     <Footer />
   </main>
@@ -16,12 +14,14 @@ import Header from "@/components/Navigation/Header";
 import Footer from "@/components/Navigation/Footer";
 import LocomotiveScroll from "locomotive-scroll";
 import CustomCursor from "@/components/CustomCursor";
+import ProjectScroller from "@/components/ProjectScroller";
 export default {
   name: "Home",
   components: {
     CustomCursor,
     Footer,
     Header,
+    ProjectScroller,
   },
   data() {
     return {

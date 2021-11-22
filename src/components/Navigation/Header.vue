@@ -18,8 +18,14 @@ header {
 }
 
 .header-link {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 32px;
+  color: rgba(0, 0, 0, 0.87);
 
   &:not(:last-of-type) {
     border-right: 2px solid rgba(0, 0, 0, 0.87);

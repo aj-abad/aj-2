@@ -24,6 +24,10 @@
   white-space: nowrap;
 }
 
+.wide{
+  font-family: "roc grotesk wide";
+}
+
 @media (max-width: 1365px) {
   html {
     font-size: 12px !important;
