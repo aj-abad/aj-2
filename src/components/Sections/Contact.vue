@@ -13,8 +13,41 @@
 </template>
 
 <script>
+import anime from "animejs/lib/anime.es";
 export default {
   name: "Contact",
+  props: {
+    isActive: Boolean,
+    progress: Number,
+  },
+  data() {
+    return {
+      isAnimating: false,
+    };
+  },
+  watch: {
+    isActive() {
+      if (this.isActive) {
+        const el = document.querySelector("#contact");
+        anime({
+          targets: this,
+          duration: 4000,
+          begin: () => {
+            el.classList.remove("d-none");
+          },
+          update: () => {
+            const offset = document
+              .querySelector("#nav-2")
+              .getBoundingClientRect().x;
+            el.style.clipPath = `inset(0 0 0 ${offset}px)`;
+          },
+          complete: () => {
+            el.style.clipPath = null;
+          },
+        });
+      }
+    },
+  },
 };
 </script>
 

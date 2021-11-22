@@ -3,10 +3,10 @@
     <custom-cursor />
     <main id="scroll-container" class="flex-grow-1 position-relative">
       <div class="d-flex h-100" id="main-view">
-        <navigation-buttons @update="setActiveLink" />
-        <work :isActive="activeLink === 0" />
-        <about :isActive="activeLink === 1" />
-        <contact :isActive="activeLink === 2" />
+        <navigation-buttons @update="setActiveLink" @progress="setProgress" />
+        <work :progress="progress" :isActive="activeLink === 0" />
+        <about :progress="progress" :isActive="activeLink === 1" />
+        <contact :progress="progress" :isActive="activeLink === 2" />
       </div>
     </main>
     <Footer />
@@ -34,6 +34,7 @@ export default {
   data() {
     return {
       scroll: null,
+      progress: 0,
       activeLink: 0,
     };
   },
@@ -45,10 +46,9 @@ export default {
     setActiveLink(e) {
       this.activeLink = e;
     },
-  },
-  beforeDestroy() {
-    this.scroll.destroy();
-    this.scroll = null;
+    setProgress(e) {
+      this.progress = e;
+    },
   },
 };
 </script>
