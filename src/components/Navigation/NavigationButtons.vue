@@ -1,36 +1,65 @@
 <template>
   <nav class="d-flex">
-    <button
-      data-scroll
-      data-scroll-sticky
-      data-scroll-target="#main-view"
-      type="button"
-      class="btn-section"
-      :class="{ active: activeLink === i }"
-      v-for="(link, i) in links"
-      :key="i"
-      @click="setActiveLink(i)"
-      :id="`nav-${i}`"
-      :style="`left: ${i * 72}px`"
-    >
-      <span> {{ link }} </span>
-      <div class="expand" aria-hidden="true">+</div>
-    </button>
+    <div class="d-flex" v-for="(link, i) in links" :key="i">
+      <button
+        data-scroll
+        data-scroll-sticky
+        data-scroll-target="#main-view"
+        type="button"
+        class="btn-section"
+        @click="setActiveLink(i)"
+        :id="`nav-${i}`"
+      >
+        <span> {{ link }} </span>
+        <div class="expand" aria-hidden="true">+</div>
+      </button>
+    </div>
   </nav>
 </template>
 
 <script>
+import anime from "animejs/lib/anime.es";
+const toLeft = [
+  ["#nav-0"],
+  ["#nav-0", "#nav-1"],
+  ["#nav-0", "#nav-1", "#nav-2"],
+];
+const toRight = [["#nav-1", "#nav-2"], ["#nav-2"], []];
 export default {
+  // components: { Work },
   name: "Header",
   data() {
     return {
       links: ["WORK", "ABOUT", "CONTACT"],
       activeLink: 0,
+      isLocked: false,
     };
+  },
+  mounted() {
+    anime({
+      targets: toRight[0],
+      left: window.innerWidth - 72 - 72 - 72 + 8,
+      duration: 0,
+    });
   },
   methods: {
     setActiveLink(i) {
-      this.activeLink = i;
+      if (this.activeLink === 1 || this.isLocked) return null;
+      this.isLocked = true;
+      console.log(toLeft[i]);
+      anime({
+        targets: toLeft[i],
+        duration: 400,
+        left: 0,
+        easing: "easeInOutQuad",
+        complete: () => (this.isLocked = false),
+      });
+      anime({
+        targets: toRight[i],
+        duration: 400,
+        left: window.innerWidth - 72 - 72 - 72 + 8,
+        easing: "easeInOutQuad",
+      });
     },
   },
 };
@@ -44,27 +73,13 @@ export default {
   justify-content: center;
   width: 72px;
   font-size: 48px;
-  position: absolute;
-  top: 0;
+  position: relative;
   border-right: 2px solid var(--bg-dark);
+  border-left: @border-right;
   outline: none !important;
   background: var(--bg);
-  transition: left 0.3s;
-  border-left: 2px solid transparent;
-
-  &:first-of-type {
-    border-left: 2px solid var(--bg);
-  }
-
-  &.active + button {
-    border-left: 2px solid var(--bg-dark);
-  }
-
-  &:hover {
-    span {
-      transform: rotate(-90deg) translateX(calc(50% + 32px));
-    }
-  }
+  margin-left: -2px;
+  z-index: 4;
 
   span {
     transition: 0.3s;
@@ -80,17 +95,5 @@ export default {
     top: 0;
     left: 0;
   }
-}
-
-#nav-0.active ~ #nav-1 {
-  margin-left: calc(100vw - (72px * 3));
-}
-
-#nav-0.active ~ #nav-2 {
-  margin-left: calc(100vw - (72px * 3));
-}
-
-#nav-1.active ~ #nav-2 {
-  margin-left: calc(100vw - (72px * 3));
 }
 </style>

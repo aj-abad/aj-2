@@ -1,7 +1,7 @@
 <template>
   <main class="d-flex flex-column" style="height: 100vh">
     <custom-cursor />
-    <main id="scroll-container" class="flex-grow-1" style="width: 10000vw">
+    <main id="scroll-container" class="flex-grow-1 position-relative">
       <div class="d-flex h-100" id="main-view">
         <navigation-buttons />
         <work />
@@ -15,12 +15,11 @@
 
 <script>
 import Footer from "@/components/Navigation/Footer";
-import LocomotiveScroll from "locomotive-scroll";
 import CustomCursor from "@/components/CustomCursor";
 import NavigationButtons from "@/components/Navigation/NavigationButtons";
-import Work from "@/components/Sections/Work";
-import About from "@/components/Sections/About";
-import Contact from "@/components/Sections/Contact";
+import Work from "../../components/Sections/Work.vue";
+import About from "../../components/Sections/About.vue";
+import Contact from "../../components/Sections/Contact.vue";
 export default {
   name: "Home",
   components: {
@@ -30,34 +29,6 @@ export default {
     Work,
     About,
     Contact,
-  },
-  data() {
-    return {
-      scroll: null,
-    };
-  },
-  mounted() {
-    setTimeout(() => {
-      this.scroll = new LocomotiveScroll({
-        el: document.querySelector("#scroll-container"),
-        getSpeed: true,
-        getDirection: true,
-        multiplier: 1,
-        lerp: 0.07,
-        direction: "horizontal",
-        smooth: true,
-      });
-      this.scroll.on("scroll", this.scrollHandler);
-    }, 100);
-  },
-  methods: {
-    scrollHandler(e) {
-      this.scrollSpeed = e.speed;
-    },
-  },
-  beforeDestroy() {
-    this.scroll.destroy();
-    this.scroll = null;
   },
 };
 </script>

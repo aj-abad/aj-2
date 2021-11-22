@@ -1,5 +1,5 @@
 <template>
-  <section id="work">
+  <section id="work" class="position-absolute w-100 h-100 top left">
     <div class="vw-100 h-100 red"></div>
   </section>
 </template>
