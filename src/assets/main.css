@@ -15,6 +15,12 @@ section.main-section {
   background: var(--bg);
 }
 
+#work-scroll,
+#about-scroll,
+#contact-scroll {
+  min-width: 100vw;
+}
+
 .animating {
   z-index: 20;
 }
