@@ -4,24 +4,29 @@
   font-weight: normal;
   font-style: normal;
 }
-/*  
- @font-face {
-     font-family: 'roc grotesk';
-     src: url('roc_grotesk_bold.woff') format('woff');
-     font-weight: bold;
-     font-style: normal;
- } */
 
 @font-face {
   font-family: "roc grotesk wide";
   src: url("roc_grotesk_wide_bold.woff") format("woff");
 }
 
+@font-face {
+  font-family: "ivy mode";
+  src: url("ivy_mode.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ivy mode";
+  src: url("ivy_mode_italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
 .display {
   font-family: "ivy mode";
-  font-weight: lighter;
   line-height: 1.25em;
-  white-space: nowrap;
 }
 
 .big-font {
