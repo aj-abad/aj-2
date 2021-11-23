@@ -2,22 +2,35 @@
   <section class="main-section" id="work">
     <div id="work-scroll" class="d-flex">
       <div
-        class="d-flex flex-column h-100 pa-8 justify-center align-start"
-        style="margin"
+        class="d-flex flex-column h-100 pa-8 project-index"
+        style="width: 25vw"
       >
-        <h1 class="wide section-header">
-          MY <br />
-          WORK
-        </h1>
+        <div class="big-font mb-16">INDEX</div>
+        <p class="big-ish-font" v-for="(project, i) in allProjects" :key="i">
+          {{ project.name }}
+        </p>
       </div>
-      <div v-for="(project, i) in projects" :key="i" class="h-100 d-flex">
+
+      <div
+        v-for="(projectGroup, i) in projects"
+        :key="i"
+        class="h-100 d-flex"
+        :id="`project-group-${projectGroup.category}`"
+      >
         <div
-          v-if="i === 0 || projects[i].year !== projects[i - 1].year"
           class="year"
+          data-scroll
+          data-scroll-sticky
+          :data-scroll-target="`#project-group-${projectGroup.category}`"
+          data-scroll-offset="-70px -100px"
         >
-          <span>{{ project.year }}</span>
+          <span>{{ projectGroup.category }}</span>
         </div>
-        <Project :project="project" />
+        <Project
+          v-for="(project, j) in projectGroup.projects"
+          :key="j"
+          :project="project"
+        />
       </div>
       <div style="width: calc((72px * 3) - 6px)" aria-hidden="true"></div>
     </div>
@@ -42,6 +55,11 @@ export default {
       scroll: null,
       projects,
     };
+  },
+  computed: {
+    allProjects() {
+      return this.projects.map((el) => el.projects).flat();
+    },
   },
   mounted() {
     setTimeout(() => {
@@ -73,6 +91,9 @@ export default {
       const el = document.querySelector("#work");
       if (this.isActive) {
         document.querySelector("#work-scroll").style.transform = null;
+        document
+          .querySelectorAll(".year")
+          .forEach((el) => (el.style.transform = null));
         anime({
           targets: this,
           duration: 400,
@@ -120,7 +141,7 @@ export default {
 
 <style lang="stylus" scoped>
 #work {
-  padding-left: 72px;
+  padding-left: calc(72px - 2px);
   overflow: hidden;
   z-index: 4;
 }
@@ -138,5 +159,9 @@ export default {
     display: block;
     transform: rotate(-90deg);
   }
+}
+
+.project-index p {
+  border-bottom: 2px solid var(--bg-dark);
 }
 </style>

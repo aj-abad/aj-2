@@ -24,7 +24,14 @@
   white-space: nowrap;
 }
 
-.wide{
+.big-font {
+  font-size: 48px;
+}
+.big-ish-font {
+  font-size: 32px;
+}
+
+.wide {
   font-family: "roc grotesk wide";
 }
 
