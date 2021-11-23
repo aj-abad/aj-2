@@ -22,14 +22,10 @@
     </svg>
     <div class="h-100 ml-auto">
       <svg class="h-100" viewBox="0 0 154.09 33.68" style="overflow: visible">
-        <text class="footer-text" transform="translate(67.08 8.34)" style="">
-          MANILA-BASED
-        </text>
-        <text transform="translate(0 20.25)" class="footer-text">
-          CREATIVE WEB DEVELOPER
-        </text>
-        <text transform="translate(113.36 32.17)" class="footer-text">
-          <tspan style="transform: scaleY(0.5)">&copy;</tspan>
+        <text x="67.08" y="8.34" class="footer-text">MANILA-BASED</text>
+        <text x="0" y="20.25" class="footer-text">CREATIVE WEB DEVELOPER</text>
+        <text x="113.36" y="32.17" class="footer-text">
+          <tspan>&copy;</tspan>
           <tspan>
             {{ year }}
           </tspan>
