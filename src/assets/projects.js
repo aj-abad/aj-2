@@ -16,7 +16,7 @@ const projects = [
             {
                 name: "Cura",
                 photo: "cura.png",
-                words: ["CURA", ""],
+                words: ["CURA"],
                 content: {
                     description: cura[0],
                     goal: cura[1],

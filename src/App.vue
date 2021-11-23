@@ -28,9 +28,6 @@ export default {
 };
 </script>
 <style lang="stylus">
-body {
-  color: var(--bg-dark);
-}
 
 #app, #view, #wrapper {
   position: absolute;

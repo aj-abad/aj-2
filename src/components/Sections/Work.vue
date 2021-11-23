@@ -23,6 +23,7 @@
           data-scroll-sticky
           :data-scroll-target="`#project-group-${projectGroup.category}`"
           data-scroll-offset="-70px -100px"
+          style="z-index: 10"
         >
           <span>{{ projectGroup.category }}</span>
         </div>
@@ -91,9 +92,11 @@ export default {
       const el = document.querySelector("#work");
       if (this.isActive) {
         document.querySelector("#work-scroll").style.transform = null;
-        document
-          .querySelectorAll(".year")
-          .forEach((el) => (el.style.transform = null));
+        document.querySelectorAll("[data-scroll]").forEach((el) => {
+          console.log(el);
+          el.style.transform = null;
+        });
+
         anime({
           targets: this,
           duration: 400,
@@ -108,9 +111,9 @@ export default {
             el.style.clipPath = `inset(0 0 0 ${offset}px)`;
           },
           complete: () => {
+            this.initScroll();
             el.classList.remove("animating");
             el.style.clipPath = null;
-            this.initScroll();
           },
         });
       } else {
