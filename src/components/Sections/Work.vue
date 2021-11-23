@@ -1,15 +1,15 @@
 <template>
   <section class="main-section" id="work">
     <div id="work-scroll" class="d-flex">
-      <div class="h-100">
-        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-          <h1 class="wide" style="font-size: 200px; line-height: 175px">
-            MY <br />
-            WORK
-          </h1>
-        </div>
+      <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
+        <h1 class="wide" style="font-size: 200px; line-height: 175px">
+          MY <br />
+          WORK
+        </h1>
       </div>
-      <div class="h-100"></div>
+      <div v-for="(project, i) in projects" :key="i">
+        {{ project.name }}
+      </div>
     </div>
   </section>
 </template>
@@ -17,6 +17,7 @@
 <script>
 import LocomotiveScroll from "locomotive-scroll";
 import anime from "animejs/lib/anime.es";
+import projects from "@/assets/projects";
 export default {
   name: "work",
   props: {
@@ -25,6 +26,7 @@ export default {
   data() {
     return {
       scroll: null,
+      projects,
     };
   },
   mounted() {
@@ -47,6 +49,9 @@ export default {
       this.scroll = null;
     },
   },
+  beforeDestroy() {
+    this.destroyScroll();
+  },
   watch: {
     isActive() {
       const el = document.querySelector("#work");
@@ -54,7 +59,7 @@ export default {
         document.querySelector("#work-scroll").style.transform = null;
         anime({
           targets: this,
-          duration: 400,
+          duration: 4000,
           begin: () => {
             el.classList.remove("d-none");
             el.classList.add("animating");
@@ -75,7 +80,7 @@ export default {
         this.destroyScroll();
         anime({
           targets: this,
-          duration: 400,
+          duration: 4000,
           begin: () => {
             el.classList.add("animating");
           },

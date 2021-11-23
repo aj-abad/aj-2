@@ -8,7 +8,10 @@
         :id="`nav-${i}`"
       >
         <span> {{ link }} </span>
-        <div class="expand" aria-hidden="true">+</div>
+        <div class="expand" aria-hidden="true">
+          <span v-if="activeLink === i">-</span>
+          <span v-else>+</span>
+        </div>
       </button>
     </div>
   </nav>
@@ -37,6 +40,13 @@ export default {
       left: window.innerWidth - 72 - 72 - 72 + 8,
       duration: 0,
     });
+    window.addEventListener("resize", () => {
+      anime({
+        targets: toRight[this.activeLink],
+        left: window.innerWidth - 72 - 72 - 72 + 8,
+        duration: 0,
+      });
+    });
   },
   methods: {
     setActiveLink(i) {
@@ -44,14 +54,14 @@ export default {
       this.isLocked = true;
       anime({
         targets: toLeft[i],
-        duration: 400,
+        duration: 4000,
         left: 0,
         easing: "easeInOutQuad",
         complete: () => (this.isLocked = false),
       });
       anime({
         targets: toRight[i],
-        duration: 400,
+        duration: 4000,
         left: window.innerWidth - 72 - 72 - 72 + 8,
         easing: "easeInOutQuad",
       });
@@ -80,7 +90,7 @@ export default {
   margin-left: -2px;
   z-index: 100;
 
-  span {
+  > span {
     transition: 0.3s;
     display: block;
     white-space: nowrap;

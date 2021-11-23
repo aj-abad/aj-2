@@ -1,40 +1,26 @@
 <template>
   <section class="main-section d-none" id="contact">
-    <div id="contact-scroll" class="d-flex">
-      <div class="vw-100 h-100">
-        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-          <h1 class="wide" style="font-size: 200px; line-height: 175px">
-            CON-
-            <br />
-            TACT
-          </h1>
+    <div id="contact-scroll" class="d-flex flex-grow-1">
+      <div class="d-flex flex-grow-1">
+        <div
+          class="
+            d-flex
+            flex-shrink-0 flex-column
+            h-100
+            pa-8
+            justify-center
+            align-start
+          "
+        >
+          <h1 class="wide" style="font-size: 200px; line-height: 175px">HMU</h1>
+          <p style="font-size: 32px">
+            Interested in working together? Hit me up!
+          </p>
         </div>
-      </div>
-      <div class="vw-100 h-100">
-        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-          <h1 class="wide" style="font-size: 200px; line-height: 175px">
-            CON-
-            <br />
-            TACT
-          </h1>
-        </div>
-      </div>
-      <div class="vw-100 h-100">
-        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-          <h1 class="wide" style="font-size: 200px; line-height: 175px">
-            CON-
-            <br />
-            TACT
-          </h1>
-        </div>
-      </div>
-      <div class="vw-100 h-100">
-        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-          <h1 class="wide" style="font-size: 200px; line-height: 175px">
-            CON-
-            <br />
-            TACT
-          </h1>
+        <div class="flex-grow-1 d-flex flex-column justify-center align-center">
+          <p class="w-100" style="font-size: 64px">EMAIL</p>
+          <p class="w-100" style="font-size: 64px">INSTAGRAM</p>
+          <p class="w-100" style="font-size: 64px">MOBILE</p>
         </div>
       </div>
     </div>
@@ -71,6 +57,9 @@ export default {
       this.scroll = null;
     },
   },
+  beforeDestroy() {
+    this.destroyScroll();
+  },
   watch: {
     isActive() {
       const el = document.querySelector("#contact");
@@ -78,7 +67,7 @@ export default {
         document.querySelector("#contact-scroll").style.transform = null;
         anime({
           targets: this,
-          duration: 400,
+          duration: 4000,
           begin: () => {
             el.classList.remove("d-none");
             el.classList.add("animating");
@@ -99,7 +88,7 @@ export default {
         this.destroyScroll();
         anime({
           targets: this,
-          duration: 400,
+          duration: 4000,
           begin: () => {
             el.classList.add("animating");
           },
@@ -126,5 +115,9 @@ export default {
   padding-left: 216px;
   overflow: hidden;
   z-index: 4;
+}
+
+p {
+  border-bottom: 2px solid var(--bg-dark);
 }
 </style>

@@ -52,6 +52,9 @@ export default {
       scroll: null,
     };
   },
+  beforeDestroy() {
+    this.destroyScroll();
+  },
   methods: {
     initScroll() {
       this.scroll = new LocomotiveScroll({
@@ -76,7 +79,7 @@ export default {
         document.querySelector("#about-scroll").style.transform = null;
         anime({
           targets: this,
-          duration: 400,
+          duration: 4000,
           begin: () => {
             el.classList.remove("d-none");
             el.classList.add("animating");
@@ -97,7 +100,7 @@ export default {
         this.destroyScroll();
         anime({
           targets: this,
-          duration: 400,
+          duration: 4000,
           begin: () => {
             el.classList.add("animating");
           },
