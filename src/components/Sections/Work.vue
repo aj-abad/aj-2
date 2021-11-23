@@ -1,15 +1,25 @@
 <template>
   <section class="main-section" id="work">
     <div id="work-scroll" class="d-flex">
-      <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-        <h1 class="wide" style="font-size: 200px; line-height: 175px">
+      <div
+        class="d-flex flex-column h-100 pa-8 justify-center align-start"
+        style="margin"
+      >
+        <h1 class="wide section-header">
           MY <br />
           WORK
         </h1>
       </div>
-      <div v-for="(project, i) in projects" :key="i">
-        {{ project.name }}
+      <div v-for="(project, i) in projects" :key="i" class="h-100 d-flex">
+        <div
+          v-if="i === 0 || projects[i].year !== projects[i - 1].year"
+          class="year"
+        >
+          <span>{{ project.year }}</span>
+        </div>
+        <Project :project="project" />
       </div>
+      <div style="width: calc((72px * 3) - 6px)" aria-hidden="true"></div>
     </div>
   </section>
 </template>
@@ -18,10 +28,14 @@
 import LocomotiveScroll from "locomotive-scroll";
 import anime from "animejs/lib/anime.es";
 import projects from "@/assets/projects";
+import Project from "@/components/Project";
 export default {
-  name: "work",
+  name: "Work",
   props: {
     isActive: Boolean,
+  },
+  components: {
+    Project,
   },
   data() {
     return {
@@ -30,7 +44,9 @@ export default {
     };
   },
   mounted() {
-    this.initScroll();
+    setTimeout(() => {
+      this.initScroll();
+    }, 100);
   },
   methods: {
     initScroll() {
@@ -107,5 +123,20 @@ export default {
   padding-left: 72px;
   overflow: hidden;
   z-index: 4;
+}
+
+.year {
+  width: 48px;
+  background: var(--bg-dark);
+  color: var(--bg);
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    display: block;
+    transform: rotate(-90deg);
+  }
 }
 </style>

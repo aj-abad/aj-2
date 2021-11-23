@@ -1,61 +1,77 @@
 .noise {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 400;
-    pointer-events: none;
-    opacity: 1;
-    z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 400;
+  pointer-events: none;
+  opacity: 1;
+  z-index: 10;
+}
+
+.dialog-overlay {
+  background: url("../img/line.png");
+  background-repeat: repeat;
+  background-size: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 400;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  z-index: 10;
 }
 
 .noise:before {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 0.25;
-    background: url("../img/noise.png");
-    background-size: 10%;
-    will-change: background-position;
-    animation: noise 0.7s infinite alternate;
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.25;
+  background: url("../img/noise.png");
+  background-size: 10%;
+  will-change: background-position;
+  animation: noise 0.7s infinite alternate;
 }
 
 @keyframes noise {
-    0%,
-    100% {
-        background-position: 0 0;
-    }
-    10% {
-        background-position: -5% -10%;
-    }
-    20% {
-        background-position: -15% 5%;
-    }
-    30% {
-        background-position: 7% -25%;
-    }
-    40% {
-        background-position: 20% 25%;
-    }
-    50% {
-        background-position: -25% 10%;
-    }
-    60% {
-        background-position: 15% 5%;
-    }
-    70% {
-        background-position: 0 15%;
-    }
-    80% {
-        background-position: 25% 35%;
-    }
-    90% {
-        background-position: -10% 10%;
-    }
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -5% -10%;
+  }
+  20% {
+    background-position: -15% 5%;
+  }
+  30% {
+    background-position: 7% -25%;
+  }
+  40% {
+    background-position: 20% 25%;
+  }
+  50% {
+    background-position: -25% 10%;
+  }
+  60% {
+    background-position: 15% 5%;
+  }
+  70% {
+    background-position: 0 15%;
+  }
+  80% {
+    background-position: 25% 35%;
+  }
+  90% {
+    background-position: -10% 10%;
+  }
 }

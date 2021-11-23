@@ -49,6 +49,9 @@ export default {
 <style lang="stylus" scoped>
 footer {
   border-top: 2px solid var(--bg-dark);
+  background: var(--bg);
+  position: relative;
+  z-index: 10;
 }
 
 path {

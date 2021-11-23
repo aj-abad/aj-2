@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <div
+      class="position-absolute h-100 v-100 top left dialog-overlay"
+      id="overlay"
+      style="opacity: 0"
+    ></div>
     <v-app id="wrapper">
       <router-view id="view" :isMobile="isMobile" />
     </v-app>
