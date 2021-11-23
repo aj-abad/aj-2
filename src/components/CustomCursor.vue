@@ -9,9 +9,7 @@
       class="position-absolute show-on-link pointer-events-none"
       style="z-index: 100001; width: 25vmin; height: 25vmin"
       :style="slowFollowCursor"
-    >
-    
-    </div>
+    ></div>
 
     <svg
       id="cursor"

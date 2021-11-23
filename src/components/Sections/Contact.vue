@@ -53,7 +53,7 @@ export default {
       });
     },
     destroyScroll() {
-      this.scroll.destroy();
+      this.scroll?.destroy();
       this.scroll = null;
     },
   },
@@ -67,7 +67,7 @@ export default {
         document.querySelector("#contact-scroll").style.transform = null;
         anime({
           targets: this,
-          duration: 4000,
+          duration: 400,
           begin: () => {
             el.classList.remove("d-none");
             el.classList.add("animating");
@@ -88,7 +88,7 @@ export default {
         this.destroyScroll();
         anime({
           targets: this,
-          duration: 4000,
+          duration: 400,
           begin: () => {
             el.classList.add("animating");
           },
