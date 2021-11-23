@@ -1,24 +1,30 @@
 <template>
-  <div class="project pa-16">
-    <div class="project-img-container">
-      <div class="noise"></div>
-      <img :src="`/img/projects/${project.photo}`" class="project-img" />
-    </div>
-    <h1
-      class="wide text-uppercase"
-      :class="{ 'multi-line': project.words.length > 1 }"
-    >
-      <br v-if="project.words.length === 1" />
-      <span
-        v-for="(word, i) in project.words"
-        :key="i"
-        style="display: inline-block"
+  <div class="project d-flex align-center pa-8">
+    <div>
+      <div class="project-img-container">
+        <div class="noise"></div>
+        <img
+          :src="`/img/projects/${project.photo}`"
+          class="project-img position-relative"
+          :style="`left: ${clamp(progress * 2)}px`"
+          data-scroll-left
+        />
+      </div>
+      <h1
+        class="wide text-uppercase"
+        :class="{ 'multi-line': project.words.length > 1 }"
       >
-        {{ word }}
-        <br />
-      </span>
-    </h1>
-    <span> SaaS </span>
+        <br v-if="project.words.length === 1" />
+        <span
+          v-for="(word, i) in project.words"
+          :key="i"
+          style="display: inline-block; position: relative"
+          data-scroll-left
+        >
+          {{ word }}
+        </span>
+      </h1>
+    </div>
   </div>
 </template>
 
@@ -27,20 +33,27 @@ export default {
   name: "Project",
   props: {
     project: Object,
+    progress: Number,
+    index: Number,
+  },
+  methods: {
+    clamp(i) {
+      return i > 200 ? 200 : i;
+    },
   },
 };
 </script>
 
 <style lang="stylus" scoped>
 .project {
-  width: 50vw;
-  border-right: 2px solid red;
+  width: 75vw;
+  border-right: 2px solid var(--bg-dark);
   overflow: hidden;
 }
 
 .project-img-container {
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   overflow: hidden;
   position: relative;
 
@@ -57,7 +70,8 @@ export default {
 }
 
 .project-img {
-  width: 120%;
+  width: calc(100% + 200px);
+  transform: translateX(-200px);
 }
 
 h1 {

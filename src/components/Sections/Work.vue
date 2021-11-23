@@ -3,10 +3,16 @@
     <div id="work-scroll" class="d-flex">
       <div
         class="d-flex flex-column h-100 pa-8 project-index"
-        style="width: 25vw"
+        style="width: calc(100vw - (72px * 4) + 32px + 48px)"
+        data-scroll
+        data-scroll-id="main"
       >
-        <div class="big-font mb-16">INDEX</div>
-        <p class="big-ish-font" v-for="(project, i) in allProjects" :key="i">
+        <p
+          class="mb-0 text-uppercase"
+          style="font-size: 128px; line-height: 128px"
+          v-for="(project, i) in allProjects"
+          :key="i"
+        >
           {{ project.name }}
         </p>
       </div>
@@ -30,6 +36,8 @@
         <Project
           v-for="(project, j) in projectGroup.projects"
           :key="j"
+          :progress="progress"
+          :index="1 + allProjects.findIndex((p) => p.name === project.name)"
           :project="project"
         />
       </div>
@@ -55,6 +63,7 @@ export default {
     return {
       scroll: null,
       projects,
+      progress: 0,
     };
   },
   computed: {
@@ -78,10 +87,14 @@ export default {
         direction: "horizontal",
         smooth: true,
       });
+      this.scroll.on("scroll", this.scrollHandler);
     },
     destroyScroll() {
       this.scroll?.destroy();
       this.scroll = null;
+    },
+    scrollHandler(e) {
+      this.progress = (100 * e.scroll.x) / e.limit.x;
     },
   },
   beforeDestroy() {
@@ -92,9 +105,8 @@ export default {
       const el = document.querySelector("#work");
       if (this.isActive) {
         document.querySelector("#work-scroll").style.transform = null;
-        document.querySelectorAll("[data-scroll]").forEach((el) => {
-          console.log(el);
-          el.style.transform = null;
+        document.querySelectorAll("[data-scroll-left]").forEach((el) => {
+          el.style.left = null;
         });
 
         anime({

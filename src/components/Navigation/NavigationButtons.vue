@@ -6,11 +6,12 @@
         class="btn-section"
         @click="setActiveLink(i)"
         :id="`nav-${i}`"
+        :class="{ selected: activeLink === i }"
       >
         <span> {{ link }} </span>
         <div class="expand" aria-hidden="true">
-          <span v-if="activeLink === i">-</span>
-          <span v-else>+</span>
+          <!-- <span v-if="activeLink === i">-</span>
+          <span v-else>+</span> -->
         </div>
       </button>
     </div>
@@ -100,9 +101,34 @@ export default {
 
   .expand {
     position: absolute;
-    width: 100%;
+    width: 68px;
+    height: 68px;
     top: 0;
     left: 0;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background: var(--bg-dark);
+    }
+
+    &::before {
+      height: 4px;
+      width: 32px;
+    }
+
+    &::after {
+      transition: height 0.2s;
+      width: 4px;
+      height: 32px;
+    }
+  }
+
+  &.selected .expand::after {
+    height: 0;
   }
 }
 </style>
