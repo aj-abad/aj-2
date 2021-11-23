@@ -36,8 +36,6 @@
         <Project
           v-for="(project, j) in projectGroup.projects"
           :key="j"
-          :progress="progress"
-          :index="1 + allProjects.findIndex((p) => p.name === project.name)"
           :project="project"
         />
       </div>
@@ -105,9 +103,6 @@ export default {
       const el = document.querySelector("#work");
       if (this.isActive) {
         document.querySelector("#work-scroll").style.transform = null;
-        document.querySelectorAll("[data-scroll-left]").forEach((el) => {
-          el.style.left = null;
-        });
 
         anime({
           targets: this,

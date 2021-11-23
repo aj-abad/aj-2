@@ -116,13 +116,13 @@ export default {
     }
 
     &::before {
-      height: 4px;
+      height: 3px;
       width: 32px;
     }
 
     &::after {
       transition: height 0.2s;
-      width: 4px;
+      width: 3px;
       height: 32px;
     }
   }

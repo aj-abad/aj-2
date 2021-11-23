@@ -6,8 +6,6 @@
         <img
           :src="`/img/projects/${project.photo}`"
           class="project-img position-relative"
-          :style="`left: ${clamp(progress * 2)}px`"
-          data-scroll-left
         />
       </div>
       <h1
@@ -19,7 +17,6 @@
           v-for="(word, i) in project.words"
           :key="i"
           style="display: inline-block; position: relative"
-          data-scroll-left
         >
           {{ word }}
         </span>
@@ -33,13 +30,6 @@ export default {
   name: "Project",
   props: {
     project: Object,
-    progress: Number,
-    index: Number,
-  },
-  methods: {
-    clamp(i) {
-      return i > 200 ? 200 : i;
-    },
   },
 };
 </script>
