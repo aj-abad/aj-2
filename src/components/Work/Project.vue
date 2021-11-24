@@ -39,6 +39,8 @@ export default {
   width: 75vw;
   border-right: 2px solid var(--bg-dark);
   overflow: hidden;
+  background: var(--bg);
+  z-index: 2;
 }
 
 .project-img-container {

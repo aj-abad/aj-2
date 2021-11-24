@@ -1,38 +1,15 @@
 <template>
   <section class="main-section d-none" id="about">
     <div id="about-scroll" class="d-flex">
-      <div class="vw-100 h-100">
-        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-          <h1 class="wide" style="font-size: 200px; line-height: 175px">
-            ABOUT
-          </h1>
-        </div>
-      </div>
-      <div class="vw-100 h-100">
-        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-          <h1 class="wide" style="font-size: 200px; line-height: 175px">
-            CON-
-            <br />
-            TACT
-          </h1>
-        </div>
-      </div>
-      <div class="vw-100 h-100">
-        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-          <h1 class="wide" style="font-size: 200px; line-height: 175px">
-            CON-
-            <br />
-            TACT
-          </h1>
-        </div>
-      </div>
-      <div class="vw-100 h-100">
-        <div class="d-flex flex-column h-100 pa-8 justify-center align-start">
-          <h1 class="wide" style="font-size: 200px; line-height: 175px">
-            CON-
-            <br />
-            TACT
-          </h1>
+      <div class="px-16 d-flex align-center">
+        <div class="position-relative" style="width: 50vw">
+          <div class="noise"></div>
+          <img
+            src="/img/me.png"
+            alt="Me"
+            class="w-100"
+            style="vertical-align: middle"
+          />
         </div>
       </div>
     </div>

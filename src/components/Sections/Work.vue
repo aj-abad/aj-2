@@ -83,10 +83,6 @@ export default {
     scrollHandler(e) {
       e;
     },
-    mouseOverHandler(i) {
-      i;
-      //      this.hoverLink = i
-    },
   },
   beforeDestroy() {
     this.destroyScroll();
