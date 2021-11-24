@@ -1,35 +1,7 @@
 <template>
   <section class="main-section" id="work">
     <div id="work-scroll" class="d-flex">
-      <div
-        class="
-          d-flex
-          flex-column
-          align-center
-          justify-center
-          h-100
-          pa-8
-          project-index
-        "
-        style="width: calc(100vw - (72px * 4) + 32px + 48px)"
-        data-scroll
-        data-scroll-id="main"
-      >
-        <button
-          class="w-100 position-relative"
-          style="font-size: 128px; line-height: 128px"
-          v-for="(project, i) in allProjects"
-          :key="i"
-          @mouseover="mouseOverHandler(i)"
-          :id="`project-index-${i}`"
-        >
-          <span class="text-uppercase">{{ project.name }}</span>
-          <div class="project-marquee">
-            <span>{{ project.content.description }}</span>
-          </div>
-        </button>
-      </div>
-
+      <featured-projects :allProjects="allProjects" />
       <div
         v-for="(projectGroup, i) in projects"
         :key="i"
@@ -62,12 +34,14 @@ import LocomotiveScroll from "locomotive-scroll";
 import anime from "animejs/lib/anime.es";
 import projects from "@/assets/projects";
 import Project from "@/components/Work/Project";
+import FeaturedProjects from "../Work/FeaturedProjects.vue";
 export default {
   name: "Work",
   props: {
     isActive: Boolean,
   },
   components: {
+    FeaturedProjects,
     Project,
   },
   data() {
@@ -187,37 +161,6 @@ export default {
   span {
     display: block;
     transform: rotate(-90deg);
-  }
-}
-
-.project-index button {
-  text-align: left;
-  border-bottom: 2px solid var(--bg-dark);
-  overflow: hidden;
-
-  .project-marquee {
-    height: 100%;
-    transform: translateY(-100%);
-    top: 0%;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    position: absolute;
-    font-size: 30%;
-    white-space: nowrap;
-    background: var(--bg-dark);
-    color: var(--bg);
-    font-family: 'ivy mode';
-    font-style: italic;
-
-    span {
-      position: absolute;
-      display: block;
-      height: 100%;
-      width: 100%;
-      transform: translateY(100%);
-      top: 0%;
-    }
   }
 }
 </style>
