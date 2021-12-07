@@ -3,6 +3,83 @@
     <div id="about-scroll" class="d-flex">
       <div class="px-16 d-flex align-center">
         <div class="position-relative" style="width: 50vw">
+          <svg
+            class="position-absolute"
+            style="height: 150vh; top: -50%; left: 8rem; z-index: 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 229.79 849.13"
+          >
+            <text
+              x="0"
+              y="0"
+              transform="matrix(0, -1, 1, 0, 79.81, 837.74)"
+              style="
+                stroke: black;
+                stroke-width: 2px;
+                font-size: 112px;
+                font-family: 'roc grotesk wide';
+                font-weight: 700;
+                opacity: 0.87;
+              "
+            >
+              WHO I AM
+            </text>
+            <text
+              x="0"
+              y="0"
+              transform="matrix(0, -1, 1, 0, 189.81, 739.93)"
+              style="
+                font-size: 112px;
+                stroke: black;
+                fill: black;
+                stroke-width: 2px;
+                font-family: roc grotesk wide;
+                font-weight: 700;
+                opacity: 0.87;
+              "
+            >
+              WHAT I DO
+            </text>
+          </svg>
+          <svg
+            class="position-absolute"
+            style="height: 150vh; top: -50%; left: 8rem; z-index: 200"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 229.79 849.13"
+          >
+            <text
+              x="0"
+              y="0"
+              transform="matrix(0, -1, 1, 0, 79.81, 837.74)"
+              style="
+                stroke: black;
+                fill: transparent;
+                stroke-width: 2px;
+                font-size: 112px;
+                font-family: 'roc grotesk wide';
+                font-weight: 700;
+                opacity: 0.87;
+              "
+            >
+              WHO I AM
+            </text>
+            <text
+              x="0"
+              y="0"
+              transform="matrix(0, -1, 1, 0, 189.81, 739.93)"
+              style="
+                font-size: 112px;
+                stroke: black;
+                fill: transparent;
+                stroke-width: 2px;
+                font-family: roc grotesk wide;
+                font-weight: 700;
+                opacity: 0.87;
+              "
+            >
+              WHAT I DO
+            </text>
+          </svg>
           <div class="noise"></div>
           <img
             src="/img/me.png"
@@ -104,5 +181,14 @@ export default {
   padding-left: 144px;
   overflow: hidden;
   z-index: 4;
+
+  .noise {
+    z-index: 101;
+  }
+
+  img {
+    position: relative;
+    z-index: 100;
+  }
 }
 </style>

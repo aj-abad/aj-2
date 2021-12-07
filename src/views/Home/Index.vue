@@ -1,8 +1,8 @@
 <template>
-  <main class="d-flex flex-column" style="height: 100vh">
+  <main class="d-flex flex-column vw-100 vh-100">
     <custom-cursor />
     <main id="scroll-container" class="flex-grow-1 position-relative">
-      <div class="d-flex h-100" id="main-view">
+      <div class="d-flex h-100 w-100" id="main-view">
         <navigation-buttons @update="setActiveLink" />
         <work :isActive="activeLink === 0" />
         <about :isActive="activeLink === 1" />

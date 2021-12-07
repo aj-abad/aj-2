@@ -1,5 +1,0 @@
-Kixothermic is an online consignment store that sells sneakers, streetwear, and luxury apparel.
-
-I wanted to create a small online reselling-slash-consignment store for the sneakerhead and streetwear community. For this, I wanted to create a brand identity as well as a web platform.
-
-I created Kixothermic.

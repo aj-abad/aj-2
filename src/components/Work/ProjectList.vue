@@ -1,28 +1,20 @@
 <template>
   <div
-    class="
-      d-flex
-      flex-column
-      align-center
-      justify-center
-      h-100
-      py-8
-      project-index
-    "
-    style="width: calc(100vw - (72px * 4) + 32px + 48px)"
+    class="d-flex flex-column align-center justify-center project-index"
+    :style="`margin-top: -${infiniteScroll}px`"
   >
     <button
-      class="w-100 position-relative"
+      class="w-100 text-uppercase position-relative"
       style="font-size: 128px; line-height: 128px"
-      v-for="(project, i) in allProjects"
+      v-for="(project, i) in projects"
       :key="i"
       @mouseenter="mouseOverHandler(i)"
       @mouseleave="mouseLeaveHandler(i)"
       :id="`project-index-${i}`"
     >
-      <span class="text-uppercase">{{ project.name }}</span>
+      <span>{{ project.name }}</span>
       <div class="project-marquee">
-        <span>{{ project.content.description }}</span>
+        <span class="marquee-inner">{{ project.name }}</span>
       </div>
     </button>
   </div>
@@ -30,20 +22,25 @@
 
 <script>
 import anime from "animejs/lib/anime.es";
+import project from "@/assets/projects";
+
+const projects = project.concat(project).concat(project).concat(project);
+const maxScrollHeight = (projects.length / 2) * 130;
 const duration = 200;
 const easing = "easeInOutQuad";
-
 export default {
   name: "FeaturedProjects",
   props: {
-    allProjects: Array,
+    scrollProgress: Number,
   },
   data() {
     return {
+      projects,
       lastMouseOver: -1,
       lastMouseLeave: -1,
       marquees: [],
       marqueeContents: [],
+      maxScrollHeight,
     };
   },
   mounted() {
@@ -61,7 +58,7 @@ export default {
       anime.set(`#project-index-${i} .project-marquee`, {
         top: isFromTop ? "0%" : "200%",
       });
-      anime.set(`#project-index-${i} .project-marquee span`, {
+      anime.set(`#project-index-${i} .project-marquee .marquee-inner`, {
         top: isFromTop ? "0%" : "-200%",
       });
 
@@ -73,7 +70,7 @@ export default {
           easing,
         });
         anime({
-          targets: [`#project-index-${i} .project-marquee span`],
+          targets: [`#project-index-${i} .project-marquee .marquee-inner`],
           top: "-100%",
           duration,
           easing,
@@ -98,6 +95,11 @@ export default {
       this.lastMouseLeave = i;
     },
   },
+  computed: {
+    infiniteScroll() {
+      return this.scrollProgress % maxScrollHeight;
+    },
+  },
 };
 </script>
 
@@ -107,10 +109,6 @@ export default {
   white-space: nowrap;
   border-bottom: 2px solid var(--bg-dark);
   overflow: hidden;
-
-  &:first-of-type {
-    border-top: 2px solid var(--bg-dark);
-  }
 
   span {
     padding-left: 64px;
@@ -124,14 +122,11 @@ export default {
     width: 100%;
     overflow: hidden;
     position: absolute;
-    font-size: 30%;
     white-space: nowrap;
     background: var(--bg-dark);
     color: var(--bg);
-    font-family: 'ivy mode';
-    font-style: italic;
 
-    span {
+    .marquee-inner {
       position: absolute;
       display: block;
       height: 100%;

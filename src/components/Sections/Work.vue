@@ -1,30 +1,18 @@
 <template>
-  <section class="main-section" id="work">
-    <div id="work-scroll" class="d-flex">
-      <featured-projects :allProjects="allProjects" />
-      <div
-        v-for="(projectGroup, i) in projects"
-        :key="i"
-        class="h-100 d-flex"
-        :id="`project-group-${projectGroup.category}`"
-      >
-        <div
-          class="year"
-          data-scroll
-          data-scroll-sticky
-          :data-scroll-target="`#project-group-${projectGroup.category}`"
-          data-scroll-offset="-70px -100px"
-          style="z-index: 10"
-        >
-          <span>{{ projectGroup.category }}</span>
+  <section
+    class="main-section"
+    id="work"
+    style="width: calc(100vw - (72px * 2) + 4px)"
+  >
+    <div
+      id="work-scroll"
+      style="width: 100%; height: 10000vh; min-height: 100vh"
+    >
+      <div class="w-100 h-100" data-scroll id="project-list-scroll-container">
+        <div class="vh-100 w-100" :style="`margin-top: ${scrollProgress}px`">
+          <project-list :scrollProgress="scrollProgress" />
         </div>
-        <Project
-          v-for="(project, j) in projectGroup.projects"
-          :key="j"
-          :project="project"
-        />
       </div>
-      <div style="width: calc((72px * 3) - 6px)" aria-hidden="true"></div>
     </div>
   </section>
 </template>
@@ -32,31 +20,20 @@
 <script>
 import LocomotiveScroll from "locomotive-scroll";
 import anime from "animejs/lib/anime.es";
-import projects from "@/assets/projects";
-import Project from "@/components/Work/Project";
-import FeaturedProjects from "../Work/FeaturedProjects.vue";
+import ProjectList from "@/components/Work/ProjectList";
 export default {
   name: "Work",
   props: {
     isActive: Boolean,
   },
   components: {
-    FeaturedProjects,
-    Project,
+    ProjectList,
   },
   data() {
     return {
       scroll: null,
-      projects,
+      scrollProgress: 0,
     };
-  },
-  computed: {
-    allProjects() {
-      return this.projects
-        .map((el) => el.projects)
-        .flat()
-        .slice(0, 5);
-    },
   },
   mounted() {
     setTimeout(() => {
@@ -71,7 +48,7 @@ export default {
         getDirection: true,
         multiplier: 1,
         lerp: 0.08,
-        direction: "horizontal",
+        direction: "vertical",
         smooth: true,
       });
       this.scroll.on("scroll", this.scrollHandler);
@@ -81,7 +58,7 @@ export default {
       this.scroll = null;
     },
     scrollHandler(e) {
-      e;
+      this.scrollProgress = e.scroll.y;
     },
   },
   beforeDestroy() {
@@ -91,8 +68,11 @@ export default {
     isActive() {
       const el = document.querySelector("#work");
       if (this.isActive) {
+        this.scrollProgress = 0;
         document.querySelector("#work-scroll").style.transform = null;
-
+        document.querySelector(
+          "#project-list-scroll-container"
+        ).style.transform = null;
         anime({
           targets: this,
           duration: 400,

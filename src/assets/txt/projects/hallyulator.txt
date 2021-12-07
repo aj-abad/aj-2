@@ -1,5 +1,0 @@
-Hallyulator is a web app that uses web scraping to calculate how lines are distributed in songs with multiple singers, such as songs by K-Pop groups.
-
-Line distributions are kind of a big deal for some K-Pop fans, so I wanted to create a tool to calculate how lines are distributed in K-Pop songs. For this, I needed to find a dataset of lyrics and a way to determine which singer sang with line.
-
-I found <a href="https://colorcodedlyrics.com" target="_blank" rel="noopener">ColorCodedLyrics</a>, a database of color-coded K-Pop lyrics. I created Hallyulator, a web app that scrapes, calculates, and visualizes data from said site.
