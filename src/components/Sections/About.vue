@@ -1,16 +1,21 @@
 <template>
   <section class="main-section d-none" id="about">
     <div id="about-scroll" class="d-flex">
-      <div class="px-16 d-flex align-center">
+      <div
+        class="px-16 d-flex align-center"
+        data-scroll
+        data-scroll-id="aboutPhoto"
+      >
         <div class="position-relative" style="width: 50vw">
           <svg
             class="position-absolute"
-            style="height: 150vh; top: -50%; left: 8rem; z-index: 1"
+            style="height: 170vh; top: -50%; left: 8rem; z-index: 1"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 229.79 849.13"
           >
             <text
-              x="0"
+              class="scroll-vertically"
+              :x="-(scrollProgress.aboutPhoto - 0.5) * 500"
               y="0"
               transform="matrix(0, -1, 1, 0, 79.81, 837.74)"
               style="
@@ -25,7 +30,8 @@
               WHO I AM
             </text>
             <text
-              x="0"
+              class="scroll-vertically"
+              :x="(scrollProgress.aboutPhoto - 0.5) * -500"
               y="0"
               transform="matrix(0, -1, 1, 0, 189.81, 739.93)"
               style="
@@ -43,12 +49,13 @@
           </svg>
           <svg
             class="position-absolute"
-            style="height: 150vh; top: -50%; left: 8rem; z-index: 200"
+            style="height: 170vh; top: -50%; left: 8rem; z-index: 200"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 229.79 849.13"
           >
             <text
-              x="0"
+              class="scroll-vertically"
+              :x="(scrollProgress.aboutPhoto - 0.5) * 500"
               y="0"
               transform="matrix(0, -1, 1, 0, 79.81, 837.74)"
               style="
@@ -64,7 +71,8 @@
               WHO I AM
             </text>
             <text
-              x="0"
+              class="scroll-vertically"
+              :x="(scrollProgress.aboutPhoto - 0.5) * -500"
               y="0"
               transform="matrix(0, -1, 1, 0, 189.81, 739.93)"
               style="
@@ -89,6 +97,9 @@
           />
         </div>
       </div>
+      <div class="vw-100">
+        <h1>Abuot me</h1>
+      </div>
     </div>
   </section>
 </template>
@@ -104,6 +115,9 @@ export default {
   data() {
     return {
       scroll: null,
+      scrollProgress: {
+        aboutPhoto: 0.5,
+      },
     };
   },
   beforeDestroy() {
@@ -120,6 +134,11 @@ export default {
         direction: "horizontal",
         smooth: true,
       });
+      this.scroll.on("scroll", this.scrollHandler);
+    },
+    scrollHandler(e) {
+      this.scrollProgress.aboutPhoto =
+        e.currentElements?.aboutPhoto?.progress ?? 0;
     },
     destroyScroll() {
       this.scroll?.destroy();
@@ -131,6 +150,9 @@ export default {
       const el = document.querySelector("#about");
       if (this.isActive) {
         document.querySelector("#about-scroll").style.transform = null;
+        // document
+        //   .querySelectorAll(".scroll-vertically")
+        //   .forEach((el) => el.setAttribute("x", 0));
         anime({
           targets: this,
           duration: 400,

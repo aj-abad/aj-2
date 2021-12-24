@@ -8,6 +8,7 @@
       style="font-size: 128px; line-height: 128px"
       v-for="(project, i) in projects"
       :key="i"
+      @click="$emit('update', project)"
       @mouseenter="mouseOverHandler(i)"
       @mouseleave="mouseLeaveHandler(i)"
       :id="`project-index-${i}`"

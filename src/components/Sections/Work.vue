@@ -21,6 +21,7 @@
 import LocomotiveScroll from "locomotive-scroll";
 import anime from "animejs/lib/anime.es";
 import ProjectList from "@/components/Work/ProjectList";
+import projects from "@/assets/projects";
 export default {
   name: "Work",
   props: {
@@ -59,6 +60,11 @@ export default {
     },
     scrollHandler(e) {
       this.scrollProgress = e.scroll.y;
+      if (this.scrollProgress > 130 * 50 * projects.length) {
+        this.$nextTick(() => {
+          this.scroll.scrollTo(0, { duration: 0, disableLerp: true });
+        });
+      }
     },
   },
   beforeDestroy() {
