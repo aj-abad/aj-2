@@ -10,7 +10,10 @@
     >
       <div class="w-100 h-100" data-scroll id="project-list-scroll-container">
         <div class="vh-100 w-100" :style="`margin-top: ${scrollProgress}px`">
-          <project-list :scrollProgress="scrollProgress" />
+          <project-list
+            @open-project="openProject"
+            :scrollProgress="scrollProgress"
+          />
         </div>
       </div>
     </div>
@@ -42,6 +45,10 @@ export default {
     }, 100);
   },
   methods: {
+    openProject(project) {
+      this.destroyScroll();
+      this.$emit("open-project", project);
+    },
     initScroll() {
       this.scroll = new LocomotiveScroll({
         el: document.querySelector("#work-scroll"),

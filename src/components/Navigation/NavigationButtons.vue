@@ -30,7 +30,7 @@ export default {
   name: "Header",
   data() {
     return {
-      links: ["ARCHIVE", "ABOUT", "CONTACT"],
+      links: ["WORK", "ABOUT", "CONTACT"],
       activeLink: 0,
       isLocked: false,
     };

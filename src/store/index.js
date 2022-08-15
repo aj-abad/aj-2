@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        hoveredProject: -1
+        hoveredProject: -1,
+        activeProject: null,
     },
     getters: {
         getHoveredProject: state => state.hoveredProject

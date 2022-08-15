@@ -8,14 +8,21 @@
       style="font-size: 128px; line-height: 128px"
       v-for="(project, i) in projects"
       :key="i"
-      @click="$emit('update', project)"
+      @click="$emit('open-project', project)"
       @mouseenter="mouseOverHandler(i)"
       @mouseleave="mouseLeaveHandler(i)"
       :id="`project-index-${i}`"
+      tabindex="-1"
     >
       <span>{{ project.name }}</span>
       <div class="project-marquee">
-        <span class="marquee-inner">{{ project.name }}</span>
+        <span class="marquee-inner"
+          >{{ project.name }}
+          <small style="font-size: 0.25em">
+            {{ project.year }}
+            <small> • {{ project.type }}</small>
+          </small>
+        </span>
       </div>
     </button>
   </div>
@@ -25,7 +32,10 @@
 import anime from "animejs/lib/anime.es";
 import project from "@/assets/projects";
 
-const projects = project.concat(project).concat(project).concat(project);
+const projects = project
+  .concat(project)
+  .concat(project)
+  .concat(project);
 const maxScrollHeight = (projects.length / 2) * 130;
 const duration = 200;
 const easing = "easeInOutQuad";
@@ -112,7 +122,7 @@ export default {
   overflow: hidden;
 
   span {
-    padding-left: 64px;
+    padding-left: 2rem;
   }
 
   .project-marquee {

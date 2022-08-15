@@ -1,10 +1,11 @@
 <template>
   <main class="d-flex flex-column vw-100 vh-100">
     <custom-cursor />
+    <ProjectTransition :name="name" v-if="isProjectTransitioning" />
     <main id="scroll-container" class="flex-grow-1 position-relative">
       <div class="d-flex h-100 w-100" id="main-view">
         <navigation-buttons @update="setActiveLink" />
-        <work :isActive="activeLink === 0" />
+        <work @open-project="openProject" :isActive="activeLink === 0" />
         <about :isActive="activeLink === 1" />
         <contact :isActive="activeLink === 2" />
       </div>
@@ -20,6 +21,7 @@ import NavigationButtons from "@/components/Navigation/NavigationButtons";
 import Work from "../../components/Sections/Work.vue";
 import About from "../../components/Sections/About.vue";
 import Contact from "../../components/Sections/Contact.vue";
+import ProjectTransition from "../../components/ProjectTransition.vue";
 export default {
   name: "Home",
   components: {
@@ -29,12 +31,15 @@ export default {
     Work,
     About,
     Contact,
+    ProjectTransition,
   },
 
   data() {
     return {
       scroll: null,
       activeLink: 0,
+      isProjectTransitioning: false,
+      name: ""
     };
   },
   mounted() {},
@@ -44,6 +49,10 @@ export default {
     },
     setActiveLink(e) {
       this.activeLink = e;
+    },
+    openProject(project) {
+      this.isProjectTransitioning = true
+      this.name = project.name
     },
   },
 };

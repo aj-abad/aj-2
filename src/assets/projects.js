@@ -1,30 +1,41 @@
 
 const projects = [
     {
+        name: "Birdnet",
+        type: "AI model",
+        year: 2022,
+        photo: "cura.png",
+    },
+    {
         name: "Cura",
-        year: "2021",
+        type: "Web application",
+        year: 2021,
         photo: "cura.png",
     },
     {
         name: "Fight the Power",
-        year: "2021",
+        type: "Exhibit website",
+        year: 2021,
         photo: "cura.png",
     },
     {
         name: "Ateneo SALT",
-        year: "2021",
+        type: "Redesign",
+        year: 2020,
         photo: "cura.png",
     },
     {
         name: "Kixothermic",
-        year: "2021",
+        type: "E-commerce website",
+        year: 2020,
         photo: "cura.png",
     },
     {
         name: "Hallyulator",
-        year: "2021",
+        type: "Web application",
+        year: 2020,
         photo: "cura.png",
     },
-]
+].sort((a, b) => (a.year > b.year ? -1 : 1));
 
 export default projects
